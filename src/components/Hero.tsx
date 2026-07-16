@@ -1,61 +1,163 @@
-import { motion } from 'motion/react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const MARQUEE_ITEMS = [
+  'Est. 1987',
+  '200+ Horses Trained',
+  'Nations Cup Finalist',
+  'Henley-on-Thames, England',
+  'Elite Showjumping',
+  'World-Class Breeding',
+  'Championship Riders',
+  'Family Owned & Operated',
+];
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Parallax background
+      gsap.to(bgRef.current, {
+        yPercent: 30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      // Title split animation
+      gsap.to('.hero-char', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.03,
+        delay: 0.3,
+        ease: 'power3.out',
+      });
+
+      // Subtitle fade
+      gsap.fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, delay: 0.8, ease: 'power2.out' }
+      );
+
+      // CTA button
+      gsap.fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, delay: 1.1, ease: 'power2.out' }
+      );
+
+      // Scroll indicator
+      gsap.fromTo(
+        scrollIndicatorRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1, delay: 1.8 }
+      );
+
+      // Scroll indicator line animation
+      gsap.to('.scroll-line-inner', {
+        y: '200%',
+        repeat: -1,
+        duration: 1.5,
+        ease: 'linear',
+        yoyo: false,
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image (Using a stunning placeholder for a showjumper) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")' }}
+    <section ref={heroRef} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      {/* Background Image with parallax */}
+      <div
+        ref={bgRef}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{
+          backgroundImage:
+            'url("https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")',
+        }}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
       </div>
 
+      {/* Hero Content */}
       <div className="relative z-10 text-center px-6 mt-16">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <p
+          ref={subtitleRef}
           className="text-equestrian-accent text-sm md:text-base uppercase tracking-[0.3em] mb-4"
+          style={{ opacity: 0 }}
         >
-          In Runs In The Blood
-        </motion.p>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          It Runs In The Blood
+        </p>
+        <h1
+          ref={titleRef}
           className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8"
         >
-          IN Showjumpers
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Link to="/services" className="inline-block border border-white/50 px-8 py-4 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300">
+          {"Arrant Equestrian Club".split(' ').map((word, wi) => (
+            <span key={wi} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
+              {word.split('').map((char, ci) => (
+                <span
+                  key={ci}
+                  className={`hero-char hero-char-${wi}`}
+                  style={{ display: 'inline-block', transform: 'translateY(120%)', opacity: 0 }}
+                >
+                  {char}
+                </span>
+              ))}
+            </span>
+          ))}
+        </h1>
+        <div ref={ctaRef} style={{ opacity: 0 }}>
+          <Link
+            to="/services"
+            className="inline-block border border-white/50 px-8 py-4 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm"
+          >
             Discover Our Services
           </Link>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+      {/* Scroll Indicator */}
+      <div
+        ref={scrollIndicatorRef}
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center"
+        style={{ opacity: 0 }}
       >
         <span className="text-[10px] uppercase tracking-widest text-white/50 mb-2">Scroll</span>
         <div className="w-px h-12 bg-white/20 relative overflow-hidden">
-          <motion.div 
-            animate={{ y: ['-100%', '100%'] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-            className="absolute top-0 w-full h-1/2 bg-white"
-          />
+          <div className="scroll-line-inner absolute top-0 w-full h-1/2 bg-white -translate-y-full"></div>
         </div>
-      </motion.div>
+      </div>
+
+      {/* Marquee Stats Ticker */}
+      <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md border-t border-white/10 py-4 z-10 overflow-hidden">
+        <div className="marquee-track flex whitespace-nowrap">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+            <span key={i} className="mx-8 text-xs uppercase tracking-[0.2em] text-white/60 flex items-center">
+              <span className="w-1.5 h-1.5 bg-equestrian-accent rounded-full mr-4 inline-block"></span>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

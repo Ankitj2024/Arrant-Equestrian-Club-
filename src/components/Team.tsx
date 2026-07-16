@@ -1,80 +1,156 @@
-import { motion } from 'motion/react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TEAM = [
   {
     name: 'Caroline Wilks',
-    description: 'Caroline has been in horses for decades and has a passion for teaching all levels of students and sourcing and developing promising young horses',
-    image: 'https://images.unsplash.com/photo-1579541592065-da8a15e49bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80'
+    role: 'Head Trainer & Founder',
+    description:
+      'Caroline has been in horses for decades and has a passion for teaching all levels of students and sourcing and developing promising young horses.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
   },
   {
     name: 'Anna Wilks',
-    description: 'Gold medal winner at the European Championships for Juniors in eventing, Anna transitioned to showjumping and is an incredible rider and trainer.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80'
+    role: 'Senior Rider & Trainer',
+    description:
+      'Gold medal winner at the European Championships for Juniors in eventing, Anna transitioned to showjumping and is an incredible rider and trainer.',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80',
   },
   {
     name: 'Tim Wilks',
-    description: 'Canadian Nations Cup final rider, Tim has achieved a top ranking of 100 in the world and aspires to represent his team in the Olympics.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80'
-  }
+    role: 'International Showjumper',
+    description:
+      'Canadian Nations Cup final rider, Tim has achieved a top ranking of 100 in the world and aspires to represent his team in the Olympics.',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80',
+  },
 ];
 
 export default function Team() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Title
+      gsap.fromTo(
+        '.team-title',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.team-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Team cards with stagger
+      gsap.fromTo(
+        '.team-card',
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.team-grid',
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Image border animation
+      gsap.fromTo(
+        '.team-image-ring',
+        { rotate: -90, opacity: 0 },
+        {
+          rotate: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.team-grid',
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // CTA button
+      gsap.fromTo(
+        '.team-cta',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.team-cta',
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="team" className="py-24 md:py-32 bg-equestrian-dark text-white">
+    <section ref={sectionRef} id="team" className="py-24 md:py-32 bg-equestrian-dark text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-20">
-          <motion.h4 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4"
-          >
+        <div className="team-header text-center mb-20">
+          <h4 className="team-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             Meet The Team
-          </motion.h4>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl md:text-5xl font-serif"
-          >
-            The Riders & Trainers
-          </motion.h2>
+          </h4>
+          <h2 className="team-title text-4xl md:text-5xl font-serif">The Riders & Trainers</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
-          {TEAM.map((member, index) => (
-            <motion.div 
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group text-center"
-            >
-              <div className="relative w-64 h-64 mx-auto mb-8 overflow-hidden rounded-full border-4 border-white/5 group-hover:border-equestrian-accent/30 transition-colors duration-500">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
+        <div className="team-grid grid md:grid-cols-3 gap-12">
+          {TEAM.map((member) => (
+            <div key={member.name} className="team-card group text-center">
+              <div className="relative w-64 h-64 mx-auto mb-8">
+                {/* Decorative ring */}
+                <div className="team-image-ring absolute inset-0 rounded-full border-2 border-equestrian-accent/30 scale-110"></div>
+                <div className="w-full h-full overflow-hidden rounded-full border-4 border-white/5 group-hover:border-equestrian-accent/40 transition-colors duration-500">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transform group-hover:scale-110 transition-all duration-700"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <h3 className="text-2xl font-serif mb-4 text-white group-hover:text-equestrian-accent transition-colors">{member.name}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-sm mx-auto">
-                {member.description}
-              </p>
-            </motion.div>
+              <p className="text-equestrian-accent text-xs uppercase tracking-widest mb-2">{member.role}</p>
+              <h3 className="text-2xl font-serif mb-4 text-white group-hover:text-equestrian-accent transition-colors">
+                {member.name}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-sm mx-auto">{member.description}</p>
+            </div>
           ))}
         </div>
-        <div className="mt-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+
+        <div className="team-cta mt-20 text-center">
+          <a
+            href="/contact"
             className="inline-block border border-white/30 px-10 py-5 text-sm uppercase tracking-widest hover:bg-white hover:text-equestrian-dark transition-colors duration-300 cursor-pointer"
           >
             Join the Team Today!
-          </motion.div>
+          </a>
         </div>
       </div>
     </section>

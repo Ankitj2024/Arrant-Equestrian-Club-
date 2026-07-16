@@ -8,12 +8,97 @@
   --color-equestrian-accent: #C4A484; /* A soft beige/gold */
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background-color: var(--color-equestrian-dark);
   color: #f3f4f6;
   font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-equestrian-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4b494;
+}
+
+/* GSAP animation utility classes */
+.gsap-reveal {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gsap-line {
+  overflow: hidden;
+}
+
+.gsap-line-inner {
+  transform: translateY(100%);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Image reveal clip-path */
+.clip-reveal {
+  clip-path: inset(0 100% 0 0);
+}
+
+.clip-reveal-active {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-equestrian-accent);
+  color: white;
+}
+
+/* Gallery lightbox overlay */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+/* Counter number display */
+.counter-number {
+  font-variant-numeric: tabular-nums;
 }

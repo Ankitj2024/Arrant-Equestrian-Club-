@@ -1,42 +1,121 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Footer columns stagger
+      gsap.fromTo(
+        '.footer-col',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Bottom bar
+      gsap.fromTo(
+        '.footer-bottom',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: '.footer-bottom',
+            start: 'top 95%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const scrollToTop = () => {
+    gsap.to(window, { scrollTo: { y: 0 }, duration: 1.5, ease: 'power3.inOut' });
+    // Fallback for browsers
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-equestrian-dark text-white pt-24 pb-8 border-t border-white/10">
+    <footer ref={footerRef} className="bg-equestrian-dark text-white pt-24 pb-8 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-          <div className="col-span-2">
+          <div className="footer-col col-span-2">
             <Link to="/" className="text-3xl font-serif font-semibold tracking-widest text-white uppercase block mb-6">
-              IN <span className="font-light">Showjumpers</span>
+              Arrant <span className="font-light text-equestrian-accent">Equestrian</span>
             </Link>
-            <p className="text-gray-400 max-w-sm text-sm leading-relaxed">
-              Elevating equestrian excellence through world-class training, breeding, and sales at the historic Rosehill estate in Henley-on-Thames.
+            <p className="text-gray-400 max-w-sm text-sm leading-relaxed mb-6">
+              Elevating equestrian excellence through world-class training, breeding, and sales at the historic Rosehill
+              estate in Henley-on-Thames.
             </p>
+            <div className="flex space-x-3">
+              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
+                IG
+              </a>
+              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
+                FB
+              </a>
+              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
+                YT
+              </a>
+            </div>
           </div>
-          
-          <div>
+
+          <div className="footer-col">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white/50 mb-6">Menu</h4>
             <ul className="space-y-4">
-              <li><Link to="/" className="text-sm text-gray-300 hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/services" className="text-sm text-gray-300 hover:text-white transition-colors">Services</Link></li>
-              <li><Link to="/estate" className="text-sm text-gray-300 hover:text-white transition-colors">The Estate</Link></li>
-              <li><Link to="/team" className="text-sm text-gray-300 hover:text-white transition-colors">Team</Link></li>
+              <li><Link to="/" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Home</Link></li>
+              <li><Link to="/services" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Services</Link></li>
+              <li><Link to="/estate" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">The Estate</Link></li>
+              <li><Link to="/horses" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Horses</Link></li>
+              <li><Link to="/team" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Team</Link></li>
             </ul>
           </div>
-          
-          <div>
+
+          <div className="footer-col">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white/50 mb-6">Connect</h4>
             <ul className="space-y-4">
-              <li><Link to="/contact" className="text-sm text-gray-300 hover:text-white transition-colors">Contact</Link></li>
-              <li><a href="#" className="text-sm text-gray-300 hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="#" className="text-sm text-gray-300 hover:text-white transition-colors">Facebook</a></li>
+              <li><Link to="/contact" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Contact Us</Link></li>
+              <li><Link to="/news" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">News & Blog</Link></li>
+              <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Instagram</a></li>
+              <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Facebook</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 uppercase tracking-wider">
-          <p>&copy; {new Date().getFullYear()} IN Showjumpers. All rights reserved.</p>
-          <p className="mt-4 md:mt-0">Powered by INSHOWJUMPERS</p>
+        <div className="footer-bottom pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 uppercase tracking-wider">
+          <p>&copy; {new Date().getFullYear()} Arrant Equestrian Club. All rights reserved.</p>
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+            <span>Henley-on-Thames, UK</span>
+            <button
+              onClick={scrollToTop}
+              className="w-10 h-10 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300"
+              aria-label="Back to top"
+            >
+              <ArrowUp size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
