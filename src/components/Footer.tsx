@@ -87,8 +87,6 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link to="/" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Home</Link></li>
               <li><Link to="/services" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Services</Link></li>
-              <li><Link to="/estate" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">The Estate</Link></li>
-              <li><Link to="/horses" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Horses</Link></li>
               <li><Link to="/team" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Team</Link></li>
             </ul>
           </div>
@@ -97,7 +95,6 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white/50 mb-6">Connect</h4>
             <ul className="space-y-4">
               <li><Link to="/contact" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Contact Us</Link></li>
-              <li><Link to="/news" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">News & Blog</Link></li>
               <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Instagram</a></li>
               <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Facebook</a></li>
             </ul>
