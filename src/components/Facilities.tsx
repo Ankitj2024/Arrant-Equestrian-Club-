@@ -127,7 +127,7 @@ export default function Facilities() {
               className="facility-card-img absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
               loading="lazy"
             />
-            <div className="absolute top-6 left-6 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full">
+            <div className="absolute top-6 left-6 z-20 bg-equestrian-dark/50 backdrop-blur-md px-3 py-1 rounded-full">
               <span className="text-[10px] text-white/80 uppercase tracking-widest">0{index + 1}</span>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-white">

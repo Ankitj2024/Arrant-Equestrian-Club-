@@ -17,7 +17,7 @@ export default function Home() {
       <Team />
       <Testimonials />
       <Gallery />
-      
+
       {/* Contact CTA Section */}
       <section className="py-24 bg-equestrian-dark border-t border-white/10 text-center">
         <div className="max-w-4xl mx-auto px-6">

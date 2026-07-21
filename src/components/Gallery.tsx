@@ -127,9 +127,8 @@ export default function Gallery() {
           {GALLERY_IMAGES.map((img, i) => (
             <div
               key={i}
-              className={`gallery-item group cursor-zoom-in relative overflow-hidden rounded-sm ${
-                i === 0 || i === 5 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
+              className={`gallery-item group cursor-zoom-in relative overflow-hidden rounded-sm ${i === 0 || i === 5 ? 'md:col-span-2 md:row-span-2' : ''
+                }`}
               onClick={() => setLightboxIndex(i)}
             >
               <img
@@ -138,7 +137,7 @@ export default function Gallery() {
                 className="w-full h-full object-cover aspect-square transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-end">
+              <div className="absolute inset-0 bg-equestrian-dark/0 group-hover:bg-equestrian-dark/40 transition-colors duration-300 flex items-end">
                 <div className="p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <span className="text-[10px] uppercase tracking-widest bg-equestrian-accent/80 px-2 py-1 rounded-full">
                     {img.category}

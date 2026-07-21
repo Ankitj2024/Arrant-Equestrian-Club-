@@ -21,7 +21,7 @@ export default function App() {
     <Router>
       <ScrollToTop />
       {loading && <Preloader onComplete={() => setLoading(false)} />}
-      <div className="min-h-screen bg-equestrian-dark font-sans text-gray-100 selection:bg-equestrian-accent selection:text-white">
+      <div className="min-h-screen bg-equestrian-dark bg-pattern font-sans text-gray-100 selection:bg-equestrian-accent selection:text-white">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

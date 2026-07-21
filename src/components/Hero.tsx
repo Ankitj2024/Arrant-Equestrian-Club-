@@ -148,7 +148,7 @@ export default function Hero() {
       </div>
 
       {/* Marquee Stats Ticker */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md border-t border-white/10 py-4 z-10 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 bg-equestrian-dark/70 backdrop-blur-md border-t border-white/10 py-4 z-10 overflow-hidden">
         <div className="marquee-track flex whitespace-nowrap">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="mx-8 text-xs uppercase tracking-[0.2em] text-white/60 flex items-center">
