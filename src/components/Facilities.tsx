@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import FloatingCircles from './FloatingCircles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,8 +77,9 @@ export default function Facilities() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200 relative overflow-hidden">
+      <FloatingCircles />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="facilities-header flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
           <div>
             <h4 className="facilities-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">

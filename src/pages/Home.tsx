@@ -12,11 +12,10 @@ export default function Home() {
     <>
       <Hero />
       <About />
+      <Gallery />
+      <Team />
       <Services />
       <Facilities />
-      <Team />
-      <Testimonials />
-      <Gallery />
 
       {/* Contact CTA Section */}
       <section className="py-16 md:py-24 bg-equestrian-dark border-t border-white/10 text-center">
@@ -33,6 +32,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <Testimonials />
     </>
   );
 }

@@ -10,7 +10,7 @@ export default function Services() {
         subtitle="World-Class Training & Development"
         image="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
       />
-      <ServicesComponent />
+      <ServicesComponent hideHeader={true} />
       <Testimonials />
     </>
   );

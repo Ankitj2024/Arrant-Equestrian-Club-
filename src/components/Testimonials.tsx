@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import FloatingCircles from './FloatingCircles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,8 +113,9 @@ export default function Testimonials() {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200 relative overflow-hidden">
+      <FloatingCircles />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="testimonials-header text-center mb-10 md:mb-16">
           <h4 className="testimonials-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             What They Say

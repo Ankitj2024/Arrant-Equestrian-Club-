@@ -15,7 +15,11 @@ const TEAM = [
   },
 ];
 
-export default function Team() {
+interface TeamProps {
+  hideHeader?: boolean;
+}
+
+export default function Team({ hideHeader = false }: TeamProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,22 +27,24 @@ export default function Team() {
 
     const ctx = gsap.context(() => {
       // Title
-      gsap.fromTo(
-        '.team-title',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.team-header',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
+      if (!hideHeader) {
+        gsap.fromTo(
+          '.team-title',
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.team-header',
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
 
       // Team cards with stagger
       gsap.fromTo(
@@ -95,41 +101,43 @@ export default function Team() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [hideHeader]);
 
   return (
     <section ref={sectionRef} id="team" className="py-16 md:py-32 bg-equestrian-dark text-white relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-        <Beams beamWidth={2} beamHeight={15} beamNumber={20} lightColor="#C9A96E" speed={1.5} />
+      <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
+        <Beams beamWidth={3} beamHeight={15} beamNumber={24} lightColor="#FFF7E6" speed={1.5} />
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="team-header text-center mb-12 md:mb-20">
-          <h4 className="team-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
-            Meet The Team
-          </h4>
-          <h2 className="team-title text-3xl md:text-5xl font-serif">The Riders & Trainers</h2>
-        </div>
+        {!hideHeader && (
+          <div className="team-header text-center mb-12 md:mb-20">
+            <h4 className="team-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
+              Meet The Team
+            </h4>
+            <h2 className="team-title text-3xl md:text-5xl font-serif">The Riders & Trainers</h2>
+          </div>
+        )}
 
-        <div className="team-grid grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div className="team-grid flex justify-center items-center">
           {TEAM.map((member) => (
-            <div key={member.name} className="team-card group text-center">
+            <div key={member.name} className="team-card text-center max-w-lg mx-auto">
               <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-6 md:mb-8">
                 {/* Decorative ring */}
                 <div className="team-image-ring absolute inset-0 rounded-full border-2 border-equestrian-accent/30 scale-110"></div>
-                <div className="w-full h-full overflow-hidden rounded-full border-4 border-white/5 group-hover:border-equestrian-accent/40 transition-colors duration-500">
+                <div className="w-full h-full overflow-hidden rounded-full border-4 border-white/10 shadow-xl">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transform group-hover:scale-110 transition-all duration-700"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
               </div>
               <p className="text-equestrian-accent text-xs uppercase tracking-widest mb-2">{member.role}</p>
-              <h3 className="text-2xl font-serif mb-4 text-white group-hover:text-equestrian-accent transition-colors">
+              <h3 className="text-2xl md:text-3xl font-serif mb-4 text-white">
                 {member.name}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-sm mx-auto">{member.description}</p>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md mx-auto">{member.description}</p>
             </div>
           ))}
         </div>

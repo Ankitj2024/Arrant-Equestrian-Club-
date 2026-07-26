@@ -47,7 +47,11 @@ const SERVICES = [
   },
 ];
 
-export default function Services() {
+interface ServicesProps {
+  hideHeader?: boolean;
+}
+
+export default function Services({ hideHeader = false }: ServicesProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,22 +59,24 @@ export default function Services() {
 
     const ctx = gsap.context(() => {
       // Title reveal
-      gsap.fromTo(
-        '.services-title',
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.services-header',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
+      if (!hideHeader) {
+        gsap.fromTo(
+          '.services-title',
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.services-header',
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
 
       // Cards stagger entrance
       gsap.fromTo(
@@ -93,17 +99,19 @@ export default function Services() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [hideHeader]);
 
   return (
     <section ref={sectionRef} id="services" className="py-16 md:py-32 bg-equestrian-dark text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="services-header text-center mb-12 md:mb-20">
-          <h4 className="services-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
-            What We Offer
-          </h4>
-          <h2 className="services-title text-3xl md:text-5xl font-serif">Our Services</h2>
-        </div>
+        {!hideHeader && (
+          <div className="services-header text-center mb-12 md:mb-20">
+            <h4 className="services-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
+              What We Offer
+            </h4>
+            <h2 className="services-title text-3xl md:text-5xl font-serif">Our Services</h2>
+          </div>
+        )}
 
         <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {SERVICES.map((service) => (

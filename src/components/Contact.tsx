@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, Instagram, Facebook, MapPin } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import FloatingCircles from './FloatingCircles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,8 +61,9 @@ export default function Contact() {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+    <section ref={sectionRef} id="contact" className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200 relative overflow-hidden">
+      <FloatingCircles />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 relative z-10">
         {/* Contact Info */}
         <div className="contact-info">
           <h4 className="contact-info-item text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">

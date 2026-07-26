@@ -113,8 +113,17 @@ export default function Gallery() {
   };
 
   return (
-    <section ref={sectionRef} className="pt-28 md:pt-36 pb-20 md:pb-32 bg-equestrian-dark text-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section ref={sectionRef} className="pt-28 md:pt-36 pb-20 md:pb-32 bg-equestrian-dark text-white min-h-screen relative overflow-hidden">
+      {/* ── Background Image Behind Header ── */}
+      <div className="absolute top-0 left-0 right-0 h-[550px] z-0 overflow-hidden pointer-events-none">
+        <div
+          className="w-full h-full bg-cover bg-center opacity-30 transform scale-105"
+          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-equestrian-dark/90 via-equestrian-dark/60 to-equestrian-dark" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         {/* ── Single Premium Header ── */}
         <div className="gallery-heading-wrap text-center mb-14 md:mb-20">
