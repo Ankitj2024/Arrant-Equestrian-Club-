@@ -112,26 +112,26 @@ export default function Testimonials() {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
+    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="testimonials-header text-center mb-16">
+        <div className="testimonials-header text-center mb-10 md:mb-16">
           <h4 className="testimonials-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             What They Say
           </h4>
-          <h2 className="testimonials-title text-4xl md:text-5xl font-serif">Client Testimonials</h2>
+          <h2 className="testimonials-title text-3xl md:text-5xl font-serif">Client Testimonials</h2>
         </div>
 
         <div className="testimonial-card max-w-4xl mx-auto">
           <div
             ref={slideRef}
-            className="bg-white p-8 md:p-16 shadow-lg border border-gray-100 rounded-sm text-center"
+            className="bg-white p-6 md:p-16 shadow-lg border border-gray-100 rounded-sm text-center"
           >
             <div className="flex justify-center mb-6">
               {Array.from({ length: current.stars }).map((_, i) => (
                 <Star key={i} size={18} className="text-equestrian-accent fill-equestrian-accent mx-0.5" />
               ))}
             </div>
-            <blockquote className="text-xl md:text-2xl font-serif text-gray-800 leading-relaxed mb-8 italic">
+            <blockquote className="text-base md:text-2xl font-serif text-gray-800 leading-relaxed mb-6 md:mb-8 italic">
               "{current.quote}"
             </blockquote>
             <div className="flex items-center justify-center space-x-4">

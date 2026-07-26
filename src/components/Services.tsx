@@ -80,19 +80,19 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="py-24 md:py-32 bg-equestrian-dark text-white">
+    <section ref={sectionRef} id="services" className="py-16 md:py-32 bg-equestrian-dark text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="services-header text-center mb-20">
+        <div className="services-header text-center mb-12 md:mb-20">
           <h4 className="services-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             What We Offer
           </h4>
-          <h2 className="services-title text-4xl md:text-5xl font-serif">Our Services</h2>
+          <h2 className="services-title text-3xl md:text-5xl font-serif">Our Services</h2>
         </div>
 
-        <div className="services-grid grid md:grid-cols-2 gap-10">
+        <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {SERVICES.map((service) => (
             <div key={service.title} className="service-card group cursor-pointer">
-              <div className="relative h-80 overflow-hidden mb-6 rounded-sm">
+              <div className="relative h-56 md:h-80 overflow-hidden mb-4 md:mb-6 rounded-sm">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 group-hover:via-transparent transition-all duration-500 z-10" />
                 <img
                   src={service.image}
@@ -102,10 +102,10 @@ export default function Services() {
                 />
                 <div className="absolute bottom-4 left-4 z-20 text-3xl">{service.icon}</div>
               </div>
-              <h3 className="text-2xl font-serif mb-3 group-hover:text-equestrian-accent transition-colors">
+              <h3 className="text-xl md:text-2xl font-serif mb-2 md:mb-3 group-hover:text-equestrian-accent transition-colors">
                 {service.title}
               </h3>
-              <p className="text-gray-400 mb-4 leading-relaxed">{service.description}</p>
+              <p className="text-gray-400 text-sm mb-3 md:mb-4 leading-relaxed">{service.description}</p>
               <span className="inline-flex items-center text-xs uppercase tracking-widest border-b border-white/30 pb-1 group-hover:border-equestrian-accent group-hover:text-equestrian-accent transition-colors">
                 Learn More
                 <svg className="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

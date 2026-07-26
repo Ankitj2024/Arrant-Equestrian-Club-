@@ -60,15 +60,15 @@ export default function Contact() {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16">
+    <section ref={sectionRef} id="contact" className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
         {/* Contact Info */}
         <div className="contact-info">
           <h4 className="contact-info-item text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             Reach Out
           </h4>
-          <h2 className="contact-info-item text-4xl md:text-5xl font-serif mb-8">Request More Information</h2>
-          <p className="contact-info-item text-gray-600 mb-12 leading-relaxed">
+          <h2 className="contact-info-item text-3xl md:text-5xl font-serif mb-6 md:mb-8">Request More Information</h2>
+          <p className="contact-info-item text-gray-600 text-sm md:text-base mb-8 md:mb-12 leading-relaxed">
             Whether you are looking for advanced training, leasing a horse, or interested in our sales, our team is ready
             to assist you.
           </p>
@@ -120,7 +120,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Form */}
-        <div className="contact-form bg-white p-8 md:p-12 shadow-lg border border-gray-100 rounded-sm">
+        <div className="contact-form bg-white p-6 md:p-12 shadow-lg border border-gray-100 rounded-sm">
           {formSubmitted ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-12">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
@@ -133,7 +133,7 @@ export default function Contact() {
             </div>
           ) : (
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="form-field grid grid-cols-2 gap-6">
+              <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">First Name</label>
                   <input

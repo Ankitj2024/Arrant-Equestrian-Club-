@@ -102,14 +102,14 @@ export default function Hero() {
       <div className="relative z-10 text-center px-6 mt-16">
         <p
           ref={subtitleRef}
-          className="text-equestrian-accent text-sm md:text-base uppercase tracking-[0.3em] mb-4"
+          className="text-equestrian-accent text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4"
           style={{ opacity: 0 }}
         >
           It Runs In The Blood
         </p>
         <h1
           ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8"
+          className="text-4xl md:text-7xl lg:text-8xl font-serif text-white mb-6 md:mb-8"
         >
           {"Arrant Equestrian Club".split(' ').map((word, wi) => (
             <span key={wi} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
@@ -128,7 +128,7 @@ export default function Hero() {
         <div ref={ctaRef} style={{ opacity: 0 }}>
           <Link
             to="/services"
-            className="inline-block border border-white/50 px-8 py-4 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm"
+            className="inline-block border border-white/50 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm"
           >
             Discover Our Services
           </Link>

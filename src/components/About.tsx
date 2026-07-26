@@ -118,22 +118,22 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="the-estate" className="py-24 md:py-32 bg-[#faf9f6] text-gray-900">
+    <section ref={sectionRef} id="the-estate" className="py-16 md:py-32 bg-[#faf9f6] text-gray-900">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div ref={textRef}>
             <h4 className="about-text-line text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
               About Us
             </h4>
-            <h2 className="about-text-line text-4xl md:text-5xl font-serif mb-8 leading-tight">
+            <h2 className="about-text-line text-3xl md:text-5xl font-serif mb-6 md:mb-8 leading-tight">
               Family Owned <br />& Operated
             </h2>
-            <p className="about-text-line text-gray-600 leading-relaxed mb-6">
+            <p className="about-text-line text-gray-600 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
               The estate has been family owned and operated for generations and is an elite training ground for aspiring
               young riders, and decorated athletes and horses. Our team breeds, sources, develops and sells top young
               horses who go on to compete at the highest levels.
             </p>
-            <p className="about-text-line text-gray-600 leading-relaxed mb-8">
+            <p className="about-text-line text-gray-600 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
               Nestled in the English countryside, in Henley-on-Thames, Rosehill has been a haven for horses for
               generations. A stunning combination of old heritage and a new functional horse centric design, the farm is
               a paradigm of old english equestrianism. From sprawling green paddocks, to expansive cross country courses
@@ -147,7 +147,7 @@ export default function About() {
             </Link>
           </div>
 
-          <div ref={imageRef} className="relative h-[600px] w-full">
+          <div ref={imageRef} className="relative h-[350px] md:h-[600px] w-full">
             <img
               src="https://images.unsplash.com/photo-1543877087-ebf71fde2be1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
               alt="Rosehill Estate rolling green pastures"
@@ -158,7 +158,7 @@ export default function About() {
         </div>
 
         {/* Stats Row */}
-        <div className="stats-row grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-gray-200">
+        <div className="stats-row grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-14 md:mt-20 pt-10 md:pt-12 border-t border-gray-200">
           {STATS.map((stat) => (
             <div key={stat.label} className="stat-item text-center">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />

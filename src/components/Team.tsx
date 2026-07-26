@@ -112,22 +112,22 @@ export default function Team() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="team" className="py-24 md:py-32 bg-equestrian-dark text-white relative overflow-hidden">
+    <section ref={sectionRef} id="team" className="py-16 md:py-32 bg-equestrian-dark text-white relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <Beams beamWidth={2} beamHeight={15} beamNumber={20} lightColor="#C9A96E" speed={1.5} />
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="team-header text-center mb-20">
+        <div className="team-header text-center mb-12 md:mb-20">
           <h4 className="team-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             Meet The Team
           </h4>
-          <h2 className="team-title text-4xl md:text-5xl font-serif">The Riders & Trainers</h2>
+          <h2 className="team-title text-3xl md:text-5xl font-serif">The Riders & Trainers</h2>
         </div>
 
-        <div className="team-grid grid md:grid-cols-3 gap-12">
+        <div className="team-grid grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {TEAM.map((member) => (
             <div key={member.name} className="team-card group text-center">
-              <div className="relative w-64 h-64 mx-auto mb-8">
+              <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-6 md:mb-8">
                 {/* Decorative ring */}
                 <div className="team-image-ring absolute inset-0 rounded-full border-2 border-equestrian-accent/30 scale-110"></div>
                 <div className="w-full h-full overflow-hidden rounded-full border-4 border-white/5 group-hover:border-equestrian-accent/40 transition-colors duration-500">
@@ -148,10 +148,10 @@ export default function Team() {
           ))}
         </div>
 
-        <div className="team-cta mt-20 text-center">
+        <div className="team-cta mt-14 md:mt-20 text-center">
           <a
             href="/contact"
-            className="inline-block border border-white/30 px-10 py-5 text-sm uppercase tracking-widest hover:bg-white hover:text-equestrian-dark transition-colors duration-300 cursor-pointer"
+            className="inline-block border border-white/30 px-8 py-4 md:px-10 md:py-5 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-equestrian-dark transition-colors duration-300 cursor-pointer"
           >
             Join the Team Today!
           </a>

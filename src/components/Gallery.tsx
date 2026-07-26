@@ -113,17 +113,17 @@ export default function Gallery() {
   }, [lightboxIndex]);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-equestrian-dark text-white border-t border-white/10">
+    <section ref={sectionRef} className="py-16 md:py-32 bg-equestrian-dark text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="gallery-header text-center mb-16">
+        <div className="gallery-header text-center mb-10 md:mb-16">
           <h4 className="gallery-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
             Our Gallery
           </h4>
-          <h2 className="gallery-title text-4xl md:text-5xl font-serif">Life at the Estate</h2>
+          <h2 className="gallery-title text-3xl md:text-5xl font-serif">Life at the Estate</h2>
         </div>
 
         {/* Grid Gallery */}
-        <div className="gallery-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="gallery-grid grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
           {GALLERY_IMAGES.map((img, i) => (
             <div
               key={i}

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -29,10 +29,9 @@ const FACILITIES = [
 
 export default function Facilities() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current || !scrollContainerRef.current) return;
+  useEffect(() => {
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
       // Title animation
@@ -53,89 +52,68 @@ export default function Facilities() {
         }
       );
 
-      // Horizontal scroll
-      const scrollContainer = scrollContainerRef.current!;
-      const totalScrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-
-      gsap.to(scrollContainer, {
-        scrollLeft: totalScrollWidth,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 10%',
-          end: `+=${totalScrollWidth}`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      });
-
-      // Cards parallax effect
-      gsap.utils.toArray<HTMLElement>('.facility-card-img').forEach((img) => {
-        gsap.fromTo(
-          img,
-          { scale: 1.15 },
-          {
-            scale: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: img.closest('.facility-card'),
-              start: 'left right',
-              end: 'right left',
-              scrub: true,
-              containerAnimation: undefined,
-            },
-          }
-        );
-      });
+      // Cards stagger entrance
+      gsap.fromTo(
+        '.facility-card',
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.facilities-grid',
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200 overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-32 bg-[#faf9f6] text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="facilities-header flex flex-col md:flex-row justify-between items-end mb-16">
+        <div className="facilities-header flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
           <div>
             <h4 className="facilities-title text-equestrian-accent text-xs font-semibold uppercase tracking-widest mb-4">
               Explore Our Grounds
             </h4>
-            <h2 className="facilities-title text-4xl md:text-5xl font-serif">Estate & Facilities</h2>
+            <h2 className="facilities-title text-3xl md:text-5xl font-serif">Estate & Facilities</h2>
           </div>
-          <p className="facilities-title text-gray-500 text-sm mt-4 md:mt-0 max-w-md text-right hidden md:block">
-            Scroll through our world-class facilities nestled in the English countryside
+          <p className="facilities-title text-gray-500 text-sm mt-4 md:mt-0 max-w-md md:text-right">
+            Discover our world-class facilities nestled in the English countryside
           </p>
         </div>
-      </div>
 
-      {/* Horizontal scroll gallery */}
-      <div
-        ref={scrollContainerRef}
-        className="flex gap-8 overflow-x-auto px-6 md:px-12 pb-4 scrollbar-hide"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        {FACILITIES.map((facility, index) => (
-          <div
-            key={facility.title}
-            className="facility-card group cursor-pointer relative flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[35vw] h-[500px] overflow-hidden rounded-sm"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-colors duration-500 z-10" />
-            <img
-              src={facility.image}
-              alt={facility.title}
-              className="facility-card-img absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
-            <div className="absolute top-6 left-6 z-20 bg-equestrian-dark/50 backdrop-blur-md px-3 py-1 rounded-full">
-              <span className="text-[10px] text-white/80 uppercase tracking-widest">0{index + 1}</span>
+        {/* Grid gallery */}
+        <div className="facilities-grid grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {FACILITIES.map((facility, index) => (
+            <div
+              key={facility.title}
+              className="facility-card group cursor-pointer relative h-[300px] md:h-[450px] overflow-hidden rounded-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-colors duration-500 z-10" />
+              <img
+                src={facility.image}
+                alt={facility.title}
+                className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+              <div className="absolute top-5 left-5 z-20 bg-equestrian-dark/50 backdrop-blur-md px-3 py-1 rounded-full">
+                <span className="text-[10px] text-white/80 uppercase tracking-widest">0{index + 1}</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 z-20 text-white">
+                <h3 className="text-xl md:text-3xl font-serif mb-2">{facility.title}</h3>
+                <p className="text-white/70 text-sm max-w-sm">{facility.description}</p>
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-white">
-              <h3 className="text-2xl md:text-3xl font-serif mb-2">{facility.title}</h3>
-              <p className="text-white/70 text-sm max-w-sm">{facility.description}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

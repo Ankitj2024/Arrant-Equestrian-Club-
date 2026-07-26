@@ -58,11 +58,11 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="bg-black text-white pt-24 pb-8 border-t border-white/10">
+    <footer ref={footerRef} className="bg-black text-white pt-16 md:pt-24 pb-8 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-          <div className="footer-col col-span-2">
-            <Link to="/" className="text-3xl font-serif font-semibold tracking-widest text-white uppercase block mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-20">
+          <div className="footer-col sm:col-span-2">
+            <Link to="/" className="text-2xl md:text-3xl font-serif font-semibold tracking-widest text-white uppercase block mb-4 md:mb-6">
               Arrant <span className="font-light text-equestrian-accent">Equestrian</span>
             </Link>
             <p className="text-gray-400 max-w-sm text-sm leading-relaxed mb-6">
