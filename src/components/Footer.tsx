@@ -58,7 +58,7 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="bg-equestrian-dark text-white pt-24 pb-8 border-t border-white/10">
+    <footer ref={footerRef} className="bg-black text-white pt-24 pb-8 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
           <div className="footer-col col-span-2">

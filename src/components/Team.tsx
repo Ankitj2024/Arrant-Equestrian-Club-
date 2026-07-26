@@ -114,7 +114,7 @@ export default function Team() {
   return (
     <section ref={sectionRef} id="team" className="py-24 md:py-32 bg-equestrian-dark text-white relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-        <Beams beamWidth={2} beamHeight={15} beamNumber={20} lightColor="#8CA8C4" speed={1.5} />
+        <Beams beamWidth={2} beamHeight={15} beamNumber={20} lightColor="#C9A96E" speed={1.5} />
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="team-header text-center mb-20">

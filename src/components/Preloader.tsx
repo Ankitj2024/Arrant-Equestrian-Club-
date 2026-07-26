@@ -40,46 +40,46 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         duration: 1.2,
         ease: 'power3.out',
       })
-      // 2. Reveal text (if any)
-      .to(textRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-      }, "-=0.8")
-      // 3. Hold for a moment with a subtle scale
-      .to(logoRef.current, {
-        scale: 1.05,
-        duration: 0.8,
-        ease: 'sine.inOut',
-      })
-      // 4. Concentric circles expand to cover the screen
-      .to(circle1Ref.current, {
-        scale: 1,
-        duration: 0.8,
-        ease: 'power3.inOut',
-      }, "-=0.2")
-      .to(circle2Ref.current, {
-        scale: 1,
-        duration: 0.8,
-        ease: 'power3.inOut',
-      }, "-=0.6")
-      .to(circle3Ref.current, {
-        scale: 1,
-        duration: 0.8,
-        ease: 'power3.inOut',
-      }, "-=0.6")
-      // Fade out logo as circles take over
-      .to(logoRef.current, {
-        opacity: 0,
-        duration: 0.4,
-      }, "-=0.8")
-      // 5. Fade out the whole container to reveal the site smoothly
-      .to(containerRef.current, {
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.inOut',
-      });
+        // 2. Reveal text (if any)
+        .to(textRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+        }, "-=0.8")
+        // 3. Hold for a moment with a subtle scale
+        .to(logoRef.current, {
+          scale: 1.05,
+          duration: 0.8,
+          ease: 'sine.inOut',
+        })
+        // 4. Concentric circles expand to cover the screen
+        .to(circle1Ref.current, {
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.inOut',
+        }, "-=0.2")
+        .to(circle2Ref.current, {
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.inOut',
+        }, "-=0.6")
+        .to(circle3Ref.current, {
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.inOut',
+        }, "-=0.6")
+        // Fade out logo as circles take over
+        .to(logoRef.current, {
+          opacity: 0,
+          duration: 0.4,
+        }, "-=0.8")
+        // 5. Fade out the whole container to reveal the site smoothly
+        .to(containerRef.current, {
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.inOut',
+        });
     }, containerRef);
 
     return () => {

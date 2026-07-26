@@ -53,14 +53,14 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-equestrian-dark/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-equestrian-dark/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
+        }`}
       style={{ opacity: 0 }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-serif font-semibold tracking-widest text-white uppercase">
+        <Link to="/" className="flex items-center gap-3 text-2xl font-serif font-semibold tracking-widest text-white uppercase">
+          <img src="/logo.jpg" alt="Arrant Equestrian Club Logo" className="h-10 w-10 rounded-full object-cover bg-white" />
           Arrant <span className="font-light text-equestrian-accent">Equestrian</span>
         </Link>
 
@@ -70,28 +70,24 @@ export default function Navbar() {
             <Link
               key={link.name}
               to={link.path}
-              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${
-                location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
-              }`}
+              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
+                }`}
             >
               {link.name}
-              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${
-                location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
           ))}
           {LINKS.slice(2).map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${
-                location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
-              }`}
+              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
+                }`}
             >
               {link.name}
-              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${
-                location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
           ))}
         </div>
@@ -108,9 +104,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 w-full bg-equestrian-dark/98 backdrop-blur-md border-t border-white/10 transition-all duration-300 ${
-          mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-        }`}
+        className={`lg:hidden absolute top-full left-0 w-full bg-equestrian-dark/98 backdrop-blur-md border-t border-white/10 transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          }`}
       >
         <div className="flex flex-col px-6 py-4 space-y-4">
           {LINKS.slice(0, 2).map((link) => (
@@ -118,9 +113,8 @@ export default function Navbar() {
               key={link.name}
               to={link.path}
               onClick={() => setMobileMenuOpen(false)}
-              className={`text-sm uppercase tracking-widest ${
-                location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
-              }`}
+              className={`text-sm uppercase tracking-widest ${location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
+                }`}
             >
               {link.name}
             </Link>
@@ -130,9 +124,8 @@ export default function Navbar() {
               key={link.name}
               to={link.path}
               onClick={() => setMobileMenuOpen(false)}
-              className={`text-sm uppercase tracking-widest ${
-                location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
-              }`}
+              className={`text-sm uppercase tracking-widest ${location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
+                }`}
             >
               {link.name}
             </Link>
