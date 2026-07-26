@@ -35,7 +35,7 @@ const LAYOUT: [number, number][] = [
   [1, 1], // 15
 ];
 
-export default function Gallery() {
+export default function Gallery({ hideHeader = false }: { hideHeader?: boolean } = {}) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -113,28 +113,32 @@ export default function Gallery() {
   };
 
   return (
-    <section ref={sectionRef} className="pt-28 md:pt-36 pb-20 md:pb-32 bg-equestrian-dark text-white min-h-screen relative overflow-hidden">
+    <section ref={sectionRef} className={`pb-20 md:pb-32 bg-equestrian-dark text-white min-h-screen relative overflow-hidden ${hideHeader ? 'pt-12 md:pt-16' : 'pt-28 md:pt-36'}`}>
       {/* ── Background Image Behind Header ── */}
-      <div className="absolute top-0 left-0 right-0 h-[550px] z-0 overflow-hidden pointer-events-none">
-        <div
-          className="w-full h-full bg-cover bg-center opacity-30 transform scale-105"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-equestrian-dark/90 via-equestrian-dark/60 to-equestrian-dark" />
-      </div>
+      {!hideHeader && (
+        <div className="absolute top-0 left-0 right-0 h-[550px] z-0 overflow-hidden pointer-events-none">
+          <div
+            className="w-full h-full bg-cover bg-center opacity-30 transform scale-105"
+            style={{ backgroundImage: 'url("/2.png")' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-equestrian-dark/90 via-equestrian-dark/60 to-equestrian-dark" />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         {/* ── Single Premium Header ── */}
-        <div className="gallery-heading-wrap text-center mb-14 md:mb-20">
-          <span className="gallery-heading inline-block text-equestrian-accent text-[11px] font-semibold uppercase tracking-[0.3em] mb-4">
-            Gallery
-          </span>
-          <h1 className="gallery-heading text-4xl md:text-6xl font-serif leading-tight">
-            Moments from Our<br className="hidden md:block" /> Equestrian World
-          </h1>
-          <div className="gallery-heading mx-auto mt-6 w-16 h-px bg-gradient-to-r from-transparent via-equestrian-accent to-transparent" />
-        </div>
+        {!hideHeader && (
+          <div className="gallery-heading-wrap text-center mb-14 md:mb-20">
+            <span className="gallery-heading inline-block text-equestrian-accent text-[11px] font-semibold uppercase tracking-[0.3em] mb-4">
+              Gallery
+            </span>
+            <h1 className="gallery-heading text-4xl md:text-6xl font-serif leading-tight">
+              Moments from Our<br className="hidden md:block" /> Equestrian World
+            </h1>
+            <div className="gallery-heading mx-auto mt-6 w-16 h-px bg-gradient-to-r from-transparent via-equestrian-accent to-transparent" />
+          </div>
+        )}
 
         {/* ── Premium Masonry Grid ── */}
         <div className="gallery-grid grid grid-cols-2 md:grid-cols-4 grid-flow-dense auto-rows-[180px] md:auto-rows-[220px] gap-2.5 md:gap-3">
