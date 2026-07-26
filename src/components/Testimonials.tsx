@@ -34,7 +34,7 @@ const TESTIMONIALS = [
     name: 'Robert Kensington',
     role: 'Eventing Competitor',
     quote:
-      'The cross country course and facilities at Rosehill are second to none. Every detail, from the footing to the jumps, has been meticulously thought out. It is the perfect environment for serious training.',
+      'The training ground and facilities at Arrant Equestrian Club are second to none. Every detail, from the footing to the jumps, has been meticulously thought out. It is the perfect environment for serious training.',
     stars: 5,
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
   },

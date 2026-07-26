@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import TeamPage from './pages/TeamPage';
 import ContactPage from './pages/ContactPage';
+import GalleryPage from './pages/GalleryPage';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
 
@@ -26,6 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

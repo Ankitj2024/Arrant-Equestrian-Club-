@@ -69,27 +69,26 @@ export default function Contact() {
           </h4>
           <h2 className="contact-info-item text-3xl md:text-5xl font-serif mb-6 md:mb-8">Request More Information</h2>
           <p className="contact-info-item text-gray-600 text-sm md:text-base mb-8 md:mb-12 leading-relaxed">
-            Whether you are looking for advanced training, leasing a horse, or interested in our sales, our team is ready
-            to assist you.
+            Whether you're a beginner looking to learn horse riding or an experienced rider seeking advanced training, our instructor Abhishek Kumar Singh and the team are ready to assist you. Admissions are now open!
           </p>
 
           <div className="space-y-6">
-            <a href="tel:+447725216164" className="contact-info-item flex items-center space-x-4 group">
+            <a href="tel:+919031334581" className="contact-info-item flex items-center space-x-4 group">
               <div className="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-full group-hover:bg-equestrian-dark group-hover:text-white group-hover:border-equestrian-dark transition-all duration-300">
                 <Phone size={18} />
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Phone</p>
-                <p className="font-serif">+44 7725 216164</p>
+                <p className="font-serif">+91 90313 34581</p>
               </div>
             </a>
-            <a href="mailto:contact@arrantequestrian.com" className="contact-info-item flex items-center space-x-4 group">
+            <a href="mailto:abhijr.rider@gmail.com" className="contact-info-item flex items-center space-x-4 group">
               <div className="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-full group-hover:bg-equestrian-dark group-hover:text-white group-hover:border-equestrian-dark transition-all duration-300">
                 <Mail size={18} />
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Email</p>
-                <p className="font-serif">contact@arrantequestrian.com</p>
+                <p className="font-serif">abhijr.rider@gmail.com</p>
               </div>
             </a>
             <div className="contact-info-item flex items-center space-x-4 group">
@@ -98,7 +97,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Location</p>
-                <p className="font-serif">Rosehill Farm, Henley-on-Thames, UK</p>
+                <p className="font-serif">Annapurna Eco Green City, Jaitikhera, Bani Road, Opp. BSF Camp, Mohanlalganj, Lucknow - 226301</p>
               </div>
             </div>
           </div>

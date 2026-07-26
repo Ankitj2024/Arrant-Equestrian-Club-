@@ -6,6 +6,7 @@ import gsap from 'gsap';
 const LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
+  { name: 'Gallery', path: '/gallery' },
   { name: 'Team', path: '/team' },
   { name: 'Contact', path: '/contact' },
 ];

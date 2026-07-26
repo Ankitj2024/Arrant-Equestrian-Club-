@@ -7,25 +7,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TEAM = [
   {
-    name: 'Caroline Wilks',
-    role: 'Head Trainer & Founder',
+    name: 'Abhishek Kumar Singh',
+    role: 'Head Riding Instructor',
     description:
-      'Caroline has been in horses for decades and has a passion for teaching all levels of students and sourcing and developing promising young horses.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
-  },
-  {
-    name: 'Anna Wilks',
-    role: 'Senior Rider & Trainer',
-    description:
-      'Gold medal winner at the European Championships for Juniors in eventing, Anna transitioned to showjumping and is an incredible rider and trainer.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80',
-  },
-  {
-    name: 'Tim Wilks',
-    role: 'International Showjumper',
-    description:
-      'Canadian Nations Cup final rider, Tim has achieved a top ranking of 100 in the world and aspires to represent his team in the Olympics.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80',
+      'Abhishek is a well-trained and experienced riding instructor who leads all training programmes at Arrant Equestrian Club — from basic riding and trail riding to show jumping, tent pegging, and general horsemanship.',
+    image: '/7.jpeg',
   },
 ];
 

@@ -134,10 +134,7 @@ export default function About() {
               horses who go on to compete at the highest levels.
             </p>
             <p className="about-text-line text-gray-600 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
-              Nestled in the English countryside, in Henley-on-Thames, Rosehill has been a haven for horses for
-              generations. A stunning combination of old heritage and a new functional horse centric design, the farm is
-              a paradigm of old english equestrianism. From sprawling green paddocks, to expansive cross country courses
-              with iconic cottages sprinkled in between, it can feel like you're stepping into another period of time.
+              Located in Annapurna Eco Green City, Jaitikhera, Bani Road, opposite BSF Camp, Mohanlalganj, Lucknow, our club offers a perfect environment for riders of all levels. Under the expert guidance of instructor Abhishek Kumar Singh, we provide training from basic riding to advanced show jumping, tent pegging, and general horsemanship.
             </p>
             <Link
               to="/team"

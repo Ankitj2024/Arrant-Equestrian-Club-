@@ -6,14 +6,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const MARQUEE_ITEMS = [
-  'Est. 1987',
-  '200+ Horses Trained',
-  'Nations Cup Finalist',
-  'Henley-on-Thames, England',
-  'Elite Showjumping',
-  'World-Class Breeding',
-  'Championship Riders',
-  'Family Owned & Operated',
+  'Mohanlalganj, Lucknow',
+  'Admission Open',
+  'Basic to Advanced Riding',
+  'Show Jumping',
+  'Tent Pegging',
+  'Trail Riding',
+  'Instructor: Abhishek Kumar Singh',
+  'General Horsemanship',
 ];
 
 export default function Hero() {

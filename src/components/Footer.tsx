@@ -66,8 +66,7 @@ export default function Footer() {
               Arrant <span className="font-light text-equestrian-accent">Equestrian</span>
             </Link>
             <p className="text-gray-400 max-w-sm text-sm leading-relaxed mb-6">
-              Elevating equestrian excellence through world-class training, breeding, and sales at the historic Rosehill
-              estate in Henley-on-Thames.
+              Elevating equestrian excellence through expert horse riding training, from beginners to advanced, at Mohanlalganj, Lucknow. Admissions open.
             </p>
             <div className="flex space-x-3">
               <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
@@ -104,7 +103,7 @@ export default function Footer() {
         <div className="footer-bottom pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 uppercase tracking-wider">
           <p>&copy; {new Date().getFullYear()} Arrant Equestrian Club. All rights reserved.</p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <span>Henley-on-Thames, UK</span>
+            <span>Mohanlalganj, Lucknow</span>
             <button
               onClick={scrollToTop}
               className="w-10 h-10 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300"
