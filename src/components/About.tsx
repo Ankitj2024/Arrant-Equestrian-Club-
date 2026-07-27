@@ -8,10 +8,10 @@ import FloatingCircles from './FloatingCircles';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: 35, suffix: '+', label: 'Years of Excellence' },
+  { value: 5, suffix: '+', label: 'Years of Experience' },
   { value: 200, suffix: '+', label: 'Horses Trained' },
-  { value: 50, suffix: '+', label: 'Competition Wins' },
-  { value: 15, suffix: '', label: 'Expert Trainers' },
+  { value: 20, suffix: '+', label: 'Competition Wins' },
+  { value: 250, suffix: '+', label: 'Customers & Learners' },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
@@ -165,6 +165,18 @@ export default function About() {
               </div>
             </div>
 
+            {/* Leadership Highlight */}
+            <div className="about-text-line bg-[#C9A96E]/10 border-l-4 border-equestrian-accent px-4 py-3.5 rounded-r-lg mb-6 md:mb-8 space-y-1.5 shadow-sm">
+              <p className="font-serif text-base md:text-lg text-equestrian-dark tracking-wide">
+                <span className="font-sans text-xs uppercase tracking-widest text-equestrian-accent font-bold mr-2">Owner:</span>
+                <span className="italic font-medium">Captain A.K. Singh</span>
+              </p>
+              <p className="font-serif text-base md:text-lg text-equestrian-dark tracking-wide">
+                <span className="font-sans text-xs uppercase tracking-widest text-equestrian-accent font-bold mr-2">Instructor:</span>
+                <span className="italic font-medium">Abhishek Kumar Singh</span>
+              </p>
+            </div>
+
             <Link
               to="/team"
               className="about-text-line inline-block border-b border-gray-900 pb-1 text-sm uppercase tracking-widest hover:text-equestrian-accent hover:border-equestrian-accent transition-colors"
@@ -173,11 +185,11 @@ export default function About() {
             </Link>
           </div>
 
-          <div ref={imageRef} className="relative h-[350px] md:h-[600px] w-full">
+          <div ref={imageRef} className="relative w-full flex items-center justify-center">
             <img
               src="/23.jpeg"
               alt="Arrant Equestrian Club Lucknow Founders with Emblem"
-              className="absolute inset-0 w-full h-full object-cover object-top md:object-center rounded-sm shadow-xl"
+              className="w-full h-auto max-h-[700px] object-contain rounded-sm shadow-xl"
               loading="lazy"
             />
           </div>

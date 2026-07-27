@@ -1,7 +1,6 @@
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
-import Facilities from '../components/Facilities';
 import Team from '../components/Team';
 import Testimonials from '../components/Testimonials';
 import Gallery from '../components/Gallery';
@@ -12,10 +11,9 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Gallery />
+      <Gallery limit={13} />
       <Team />
       <Services />
-      <Facilities />
 
       {/* Contact CTA Section */}
       <section className="py-16 md:py-24 bg-equestrian-dark border-t border-white/10 text-center">

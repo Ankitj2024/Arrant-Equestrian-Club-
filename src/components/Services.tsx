@@ -66,8 +66,8 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.15,
+            duration: 0.4,
+            stagger: 0.07,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: '.services-header',
@@ -86,8 +86,8 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          stagger: 0.15,
+          duration: 0.4,
+          stagger: 0.07,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.services-grid',
@@ -117,16 +117,16 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           {SERVICES.map((service) => (
             <div
               key={service.title}
-              className="service-card group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 hover:bg-white/[0.07] hover:border-equestrian-accent/40 transition-all duration-500 hover:-translate-y-1"
+              className="service-card group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 hover:bg-white/[0.07] hover:border-equestrian-accent/40 transition-all duration-200 hover:-translate-y-1"
             >
-              <div className="text-4xl md:text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-150">
                 {service.icon}
               </div>
-              <h3 className="text-lg md:text-xl font-serif mb-3 group-hover:text-equestrian-accent transition-colors duration-300">
+              <h3 className="text-lg md:text-xl font-serif mb-3 group-hover:text-equestrian-accent transition-colors duration-150">
                 {service.title}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
-              <div className="absolute top-0 right-0 w-24 h-24 bg-equestrian-accent/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-equestrian-accent/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
           ))}
         </div>

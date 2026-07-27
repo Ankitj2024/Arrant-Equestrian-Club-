@@ -11,7 +11,7 @@ const TEAM = [
     role: 'Head Riding Instructor',
     description:
       'Abhishek is a well-trained and experienced riding instructor who leads all training programmes at Arrant Equestrian Club — from basic riding and trail riding to show jumping, tent pegging, and general horsemanship.',
-    image: '/7.jpeg',
+    image: '/24.png',
   },
 ];
 

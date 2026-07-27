@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 15 local images (1–6 are .png, 7–15 are .jpeg)
+// 23 local images (1–6 are .png, 7–23 are .jpeg)
 const GALLERY_IMAGES: { src: string; alt: string }[] = [];
-for (let i = 1; i <= 15; i++) {
+for (let i = 1; i <= 23; i++) {
   const ext = i <= 6 ? 'png' : 'jpeg';
   GALLERY_IMAGES.push({
     src: `/${i}.${ext}`,
@@ -15,7 +16,7 @@ for (let i = 1; i <= 15; i++) {
   });
 }
 
-// Premium masonry layout pattern for 15 images
+// Premium masonry layout pattern for 23 images
 // Each entry: [colSpan, rowSpan] on md+ screens
 const LAYOUT: [number, number][] = [
   [2, 2], // 1 — hero feature
@@ -33,11 +34,22 @@ const LAYOUT: [number, number][] = [
   [1, 1], // 13
   [1, 1], // 14
   [1, 1], // 15
+  [2, 1], // 16 — wide
+  [1, 2], // 17 — tall
+  [1, 1], // 18
+  [1, 1], // 19
+  [1, 1], // 20
+  [1, 1], // 21
+  [1, 1], // 22
+  [1, 1], // 23
 ];
 
-export default function Gallery({ hideHeader = false }: { hideHeader?: boolean } = {}) {
+export default function Gallery({ hideHeader = false, limit }: { hideHeader?: boolean; limit?: number } = {}) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const images = limit ? GALLERY_IMAGES.slice(0, limit) : GALLERY_IMAGES;
+  const layout = limit ? LAYOUT.slice(0, limit) : LAYOUT;
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -89,13 +101,13 @@ export default function Gallery({ hideHeader = false }: { hideHeader?: boolean }
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setLightboxIndex(null);
       if (e.key === 'ArrowRight' && lightboxIndex !== null)
-        setLightboxIndex((lightboxIndex + 1) % GALLERY_IMAGES.length);
+        setLightboxIndex((lightboxIndex + 1) % images.length);
       if (e.key === 'ArrowLeft' && lightboxIndex !== null)
-        setLightboxIndex((lightboxIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+        setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [lightboxIndex]);
+  }, [lightboxIndex, images.length]);
 
   // Lock body scroll when lightbox is open
   useEffect(() => {
@@ -105,11 +117,11 @@ export default function Gallery({ hideHeader = false }: { hideHeader?: boolean }
 
   const goPrev = () => {
     if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+    setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
   };
   const goNext = () => {
     if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex + 1) % GALLERY_IMAGES.length);
+    setLightboxIndex((lightboxIndex + 1) % images.length);
   };
 
   return (
@@ -142,8 +154,8 @@ export default function Gallery({ hideHeader = false }: { hideHeader?: boolean }
 
         {/* ── Premium Masonry Grid ── */}
         <div className="gallery-grid grid grid-cols-2 md:grid-cols-4 grid-flow-dense auto-rows-[180px] md:auto-rows-[220px] gap-2.5 md:gap-3">
-          {GALLERY_IMAGES.map((img, i) => {
-            const [colSpan, rowSpan] = LAYOUT[i];
+          {images.map((img, i) => {
+            const [colSpan, rowSpan] = layout[i];
             return (
               <div
                 key={i}
@@ -174,6 +186,24 @@ export default function Gallery({ hideHeader = false }: { hideHeader?: boolean }
             );
           })}
         </div>
+
+        {/* ── See More / Full Gallery CTA ── */}
+        {limit && (
+          <div className="mt-14 md:mt-20 text-center">
+            <p className="text-gray-400 text-sm md:text-base font-light mb-6">
+              Want to see more moments captured at Arrant Equestrian Club?
+            </p>
+            <Link
+              to="/gallery"
+              className="group inline-flex items-center gap-3 border border-[#C9A96E]/60 bg-[#C9A96E]/10 hover:bg-[#C9A96E] hover:text-black px-8 py-4 text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-[#C9A96E] transition-all duration-500 rounded-full shadow-[0_0_20px_rgba(201,169,110,0.15)] hover:shadow-[0_0_30px_rgba(201,169,110,0.6)] transform hover:-translate-y-0.5 backdrop-blur-sm"
+            >
+              <span>See More Photos</span>
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* ── Lightbox ── */}
@@ -208,15 +238,15 @@ export default function Gallery({ hideHeader = false }: { hideHeader?: boolean }
 
           {/* Image */}
           <img
-            src={GALLERY_IMAGES[lightboxIndex].src}
-            alt={GALLERY_IMAGES[lightboxIndex].alt}
+            src={images[lightboxIndex].src}
+            alt={images[lightboxIndex].alt}
             className="max-w-[92vw] max-h-[88vh] object-contain cursor-default rounded-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
 
           {/* Counter */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-[11px] uppercase tracking-[0.25em] font-light">
-            {String(lightboxIndex + 1).padStart(2, '0')} / {String(GALLERY_IMAGES.length).padStart(2, '0')}
+            {String(lightboxIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
           </div>
         </div>
       )}

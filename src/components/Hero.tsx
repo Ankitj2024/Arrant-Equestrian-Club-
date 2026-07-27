@@ -111,7 +111,7 @@ export default function Hero() {
           ref={titleRef}
           className="text-4xl md:text-7xl lg:text-8xl font-serif text-white mb-6 md:mb-8"
         >
-          {"Arrant Equestrian Club".split(' ').map((word, wi) => (
+          {"Arrant Equestrian Club & Stud Farm".split(' ').map((word, wi) => (
             <span key={wi} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
               {word.split('').map((char, ci) => (
                 <span

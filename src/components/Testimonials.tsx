@@ -8,36 +8,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TESTIMONIALS = [
   {
-    name: 'Eleanor Ashworth',
-    role: 'Competitive Rider, Grade A',
+    name: 'Ananya Chauhan',
+    role: 'National Showjumping Competitor',
     quote:
-      'Training at Arrant Equestrian Club transformed my riding career. The level of coaching and attention to detail is something I have never experienced before. Within a year, I was competing at a level I only dreamed of.',
+      'Training at Arrant Equestrian Club under Captain A.K. Singh transformed my riding technique. The level of personal attention and tactical coaching in show jumping is unmatched anywhere in India. Within just one season, I was winning ribbons at national EFI championships.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
   },
   {
-    name: 'James Thornton',
-    role: 'Amateur Showjumper',
+    name: 'Vikramaditya Rathore',
+    role: 'Tent Pegging & Showjumping Rider',
     quote:
-      'The bootcamp programme was exactly what I needed. Intensive, focused, and incredibly rewarding. The team genuinely cares about your progress and the welfare of the horses. A truly world-class facility.',
+      'The bootcamp programme at Arrant Equestrian was an incredible experience. Instructor Abhishek’s guidance on horse harmony, balance, and precision riding is extraordinary. The facilities here in Mohanlalganj are truly world-class.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
   },
   {
-    name: 'Sophia Hartley',
-    role: 'Horse Owner & Client',
+    name: 'Dr. Radhika Sharma',
+    role: 'Horse Owner & Club Member',
     quote:
-      'Arrant Equestrian sourced the most wonderful mare for my daughter. Their knowledge of bloodlines and potential is unmatched. We felt supported throughout the entire buying process and beyond.',
+      'Arrant Equestrian Club sourced the most wonderful thoroughbred for our family. Their knowledge of bloodlines and stud farm excellence is phenomenal. We felt guided and supported throughout the entire process.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
   },
   {
-    name: 'Robert Kensington',
-    role: 'Eventing Competitor',
+    name: 'Kabir Singhania',
+    role: 'Dressage & Eventing Competitor',
     quote:
-      'The training ground and facilities at Arrant Equestrian Club are second to none. Every detail, from the footing to the jumps, has been meticulously thought out. It is the perfect environment for serious training.',
+      'The training arena and stabling facilities at Arrant Equestrian Club set a new benchmark for equestrian sports in Uttar Pradesh. Every detail, from the footing to the obstacle courses, makes it the ultimate destination for serious riders.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
   },
 ];
 

@@ -9,7 +9,6 @@ Arrant Equestrian Club
 │   ├── Hero Section: The main hero banner with a welcoming background image.
 │   ├── About Section: A brief introduction to the club's heritage and philosophy.
 │   ├── Services Section: Highlights of the core equestrian services offered.
-│   ├── Facilities Section: Overview of the estate's world-class facilities.
 │   ├── Team Section: Introduction to the top instructors and riders.
 │   ├── Testimonials Section: Reviews and experiences from clients/members.
 │   ├── Gallery Section: A visual masonry grid of photos highlighting the club's activities.
