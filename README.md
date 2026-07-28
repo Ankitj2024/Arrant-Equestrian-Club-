@@ -1,6 +1,6 @@
 # Arrant Equestrian Club & Stud Farm
 
-![Arrant Equestrian Club Screenshot](./public/screenshot.png)
+![Arrant Equestrian Club Screenshot](./public/image.png)
 
 A modern, high-performance web application built for the **Arrant Equestrian Club & Stud Farm**. This platform showcases the club's services, team members, gallery, and provides seamless contact options for prospective riders and equine enthusiasts.
 
