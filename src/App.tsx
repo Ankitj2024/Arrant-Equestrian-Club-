@@ -14,6 +14,7 @@ import ContactPage from './pages/ContactPage';
 import GalleryPage from './pages/GalleryPage';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
+import SocialSidebar from './components/SocialSidebar';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ export default function App() {
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       <div className="min-h-screen bg-equestrian-dark bg-pattern font-sans text-gray-100 selection:bg-equestrian-accent selection:text-white">
         <Navbar />
+        <SocialSidebar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
