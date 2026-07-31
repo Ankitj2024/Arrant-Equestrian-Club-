@@ -22,12 +22,13 @@ export default function Home() {
           <p className="text-gray-400 mb-8 md:mb-10 text-sm md:text-base">
             Reach out to our team for inquiries about our services, boarding, or scheduling a visit.
           </p>
-          <Link
-            to="/contact"
+          <a
+            href="https://wa.me/919031334581"
+            target="_blank" rel="noopener noreferrer"
             className="inline-block border border-white/50 px-6 py-3 md:px-8 md:py-4 text-[10px] md:text-xs uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm"
           >
             Contact Us
-          </Link>
+          </a>
         </div>
       </section>
 

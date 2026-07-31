@@ -8,42 +8,43 @@ const SERVICES = [
   {
     title: 'Basic Riding',
     description: 'Learn the fundamentals of horse riding with expert guidance, from mounting to confident trotting and cantering.',
-    icon: '🐴',
+    image: '/basic riding.jpeg',
   },
   {
     title: 'Show Jumping',
     description: 'Train in the art of competitive show jumping with professionally designed courses and seasoned jumpers.',
-    icon: '🏅',
+    image: '/show jumping.jpeg',
+    imagePosition: 'object-top',
   },
   {
     title: 'Trail Riding',
     description: 'Explore scenic countryside trails on horseback — a perfect blend of adventure and natural beauty.',
-    icon: '🌿',
+    image: '/trail riding.jpeg',
   },
   {
     title: 'Stabling Facilities',
     description: 'Premium stabling with round-the-clock care, spacious stalls, and top-quality feed and veterinary support.',
-    icon: '🏠',
+    image: '/stabiling facilities.jpeg',
   },
   {
     title: 'Photoshoot',
     description: 'Capture stunning equestrian moments with our professional photography sessions at the estate.',
-    icon: '📸',
+    image: '/photoshoot.jpeg',
   },
   {
     title: 'Tent Pegging',
     description: 'Experience the thrill of this ancient mounted sport — lance work, speed, and precision on horseback.',
-    icon: '⚔️',
+    image: '/tent pegging.jpeg',
   },
   {
     title: 'Well Trained Riding Instructor',
     description: 'Our certified instructors bring years of championship-level experience to every lesson, for all skill levels.',
-    icon: '🎓',
+    image: '/21.jpeg',
   },
   {
     title: 'General Horsemanship',
     description: 'Master the complete art of horse care — grooming, tacking, feeding, health management, and bonding.',
-    icon: '🐎',
+    image: '/general horsemanship.jpeg',
   },
 ];
 
@@ -113,20 +114,31 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           </div>
         )}
 
-        <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {SERVICES.map((service) => (
             <div
               key={service.title}
-              className="service-card group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 hover:bg-white/[0.07] hover:border-equestrian-accent/40 transition-all duration-200 hover:-translate-y-1"
+              className="service-card group relative bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden hover:bg-white/[0.07] hover:border-equestrian-accent/40 transition-all duration-300 hover:-translate-y-2 flex flex-col shadow-lg shadow-black/20"
             >
-              <div className="text-4xl md:text-5xl mb-5 transform group-hover:scale-110 transition-transform duration-150">
-                {service.icon}
+              <div className="w-full h-48 sm:h-56 overflow-hidden relative">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className={`w-full h-full object-cover ${service.imagePosition || 'object-center'} transform group-hover:scale-110 transition-transform duration-700 ease-in-out`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-equestrian-dark to-transparent opacity-80" />
               </div>
-              <h3 className="text-lg md:text-xl font-serif mb-3 group-hover:text-equestrian-accent transition-colors duration-150">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
-              <div className="absolute top-0 right-0 w-24 h-24 bg-equestrian-accent/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              
+              <div className="p-6 md:p-8 flex flex-col flex-grow relative z-10 -mt-12">
+                <h3 className="text-xl md:text-2xl font-serif mb-3 group-hover:text-equestrian-accent transition-colors duration-200">
+                  {service.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                  {service.description}
+                </p>
+              </div>
+              
+              <div className="absolute top-0 right-0 w-32 h-32 bg-equestrian-accent/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
           ))}
         </div>

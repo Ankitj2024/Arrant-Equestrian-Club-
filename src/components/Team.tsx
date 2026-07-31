@@ -11,7 +11,7 @@ const TEAM = [
     role: 'Head Riding Instructor',
     description:
       'Abhishek is a well-trained and experienced riding instructor who leads all training programmes at Arrant Equestrian Club — from basic riding and trail riding to show jumping, tent pegging, and general horsemanship.',
-    image: '/24.png',
+    image: '/24.jpeg',
   },
 ];
 
@@ -67,9 +67,9 @@ export default function Team({ hideHeader = false }: TeamProps) {
       // Image border animation
       gsap.fromTo(
         '.team-image-ring',
-        { rotate: -90, opacity: 0 },
+        { scale: 0.95, opacity: 0 },
         {
-          rotate: 0,
+          scale: 1,
           opacity: 1,
           duration: 1,
           stagger: 0.2,
@@ -118,33 +118,34 @@ export default function Team({ hideHeader = false }: TeamProps) {
           </div>
         )}
 
-        <div className="team-grid flex justify-center items-center">
+        <div className="team-grid flex flex-col items-center">
           {TEAM.map((member) => (
-            <div key={member.name} className="team-card text-center max-w-lg mx-auto">
-              <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-6 md:mb-8">
+            <div key={member.name} className="team-card text-center w-full max-w-2xl mx-auto px-4">
+              <div className="relative w-full aspect-video mx-auto mb-8 md:mb-10">
                 {/* Decorative ring */}
-                <div className="team-image-ring absolute inset-0 rounded-full border-2 border-equestrian-accent/30 scale-110"></div>
-                <div className="w-full h-full overflow-hidden rounded-full border-4 border-white/10 shadow-xl">
+                <div className="team-image-ring absolute -inset-2 md:-inset-3 rounded-2xl border border-equestrian-accent/30 opacity-0 pointer-events-none"></div>
+                <div className="w-full h-full overflow-hidden rounded-xl border border-white/10 shadow-2xl">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="lazy"
                   />
                 </div>
               </div>
-              <p className="text-equestrian-accent text-xs uppercase tracking-widest mb-2">{member.role}</p>
-              <h3 className="text-2xl md:text-3xl font-serif mb-4 text-white">
+              <p className="text-equestrian-accent text-xs uppercase tracking-widest mb-3">{member.role}</p>
+              <h3 className="text-2xl md:text-4xl font-serif mb-5 text-white">
                 {member.name}
               </h3>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md mx-auto">{member.description}</p>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">{member.description}</p>
             </div>
           ))}
         </div>
 
         <div className="team-cta mt-14 md:mt-20 text-center">
           <a
-            href="/contact"
+            href="https://wa.me/919031334581"
+            target="_blank" rel="noopener noreferrer"
             className="inline-block border border-white/30 px-8 py-4 md:px-10 md:py-5 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-equestrian-dark transition-colors duration-300 cursor-pointer"
           >
             Join the Team Today!

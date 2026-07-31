@@ -10,7 +10,6 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import TeamPage from './pages/TeamPage';
-import ContactPage from './pages/ContactPage';
 import GalleryPage from './pages/GalleryPage';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
@@ -31,7 +30,6 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </div>

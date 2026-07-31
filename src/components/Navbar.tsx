@@ -8,7 +8,7 @@ const LINKS = [
   { name: 'Services', path: '/services' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'Team', path: '/team' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Contact', path: 'https://wa.me/919031334581' },
 ];
 
 export default function Navbar() {
@@ -65,31 +65,31 @@ export default function Navbar() {
           Arrant <span className="font-light text-equestrian-accent">Equestrian</span>
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
-          {LINKS.slice(0, 2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
-                }`}
-            >
-              {link.name}
-              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-            </Link>
-          ))}
-          {LINKS.slice(2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
-                }`}
-            >
-              {link.name}
-              <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-            </Link>
+          {LINKS.map((link) => (
+            link.path.startsWith('http') ? (
+              <a
+                key={link.name}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-sm uppercase tracking-widest transition-colors relative group hover:text-equestrian-accent"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 w-0 group-hover:w-full"></span>
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`nav-link text-sm uppercase tracking-widest transition-colors relative group ${location.pathname === link.path ? 'text-equestrian-accent' : 'hover:text-equestrian-accent'
+                  }`}
+              >
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 h-px bg-equestrian-accent transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+              </Link>
+            )
           ))}
         </div>
 
@@ -109,27 +109,29 @@ export default function Navbar() {
           }`}
       >
         <div className="flex flex-col px-6 py-6 space-y-5">
-          {LINKS.slice(0, 2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`text-sm uppercase tracking-widest ${location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
-                }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          {LINKS.slice(2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`text-sm uppercase tracking-widest ${location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
-                }`}
-            >
-              {link.name}
-            </Link>
+          {LINKS.map((link) => (
+            link.path.startsWith('http') ? (
+              <a
+                key={link.name}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm uppercase tracking-widest text-white/80 hover:text-white"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-sm uppercase tracking-widest ${location.pathname === link.path ? 'text-equestrian-accent' : 'text-white/80 hover:text-white'
+                  }`}
+              >
+                {link.name}
+              </Link>
+            )
           ))}
         </div>
       </div>

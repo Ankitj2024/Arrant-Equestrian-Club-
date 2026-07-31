@@ -68,17 +68,7 @@ export default function Footer() {
             <p className="text-gray-400 max-w-sm text-sm leading-relaxed mb-6">
               Elevating equestrian excellence through expert horse riding training, from beginners to advanced, at Mohanlalganj, Lucknow. Admissions open.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
-                IG
-              </a>
-              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
-                FB
-              </a>
-              <a href="#" className="w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white/50 hover:text-white hover:border-equestrian-accent hover:bg-equestrian-accent/10 transition-all duration-300 text-sm">
-                YT
-              </a>
-            </div>
+
           </div>
 
           <div className="footer-col">
@@ -93,7 +83,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white/50 mb-6">Connect</h4>
             <ul className="space-y-4">
-              <li><Link to="/contact" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Contact Us</Link></li>
+              <li><a href="https://wa.me/919031334581" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Contact Us</a></li>
               <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Instagram</a></li>
               <li><a href="#" className="text-sm text-gray-300 hover:text-equestrian-accent transition-colors">Facebook</a></li>
             </ul>
