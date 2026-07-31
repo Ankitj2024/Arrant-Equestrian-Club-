@@ -109,20 +109,28 @@ export default function Hero() {
         </p>
         <h1
           ref={titleRef}
-          className="text-4xl md:text-7xl lg:text-8xl font-serif text-white mb-6 md:mb-8"
+          className="text-4xl md:text-7xl lg:text-8xl font-serif text-white mb-6 md:mb-8 leading-tight"
         >
-          {"Arrant Equestrian Club & Stud Farm".split(' ').map((word, wi) => (
-            <span key={wi} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
-              {word.split('').map((char, ci) => (
-                <span
-                  key={ci}
-                  className={`hero-char hero-char-${wi}`}
-                  style={{ display: 'inline-block', transform: 'translateY(120%)', opacity: 0 }}
-                >
-                  {char}
+          {[
+            "Arrant Equestrian Club",
+            "&",
+            "Stud Farm"
+          ].map((line, li) => (
+            <div key={li} className={`block ${li === 1 ? 'text-3xl md:text-5xl lg:text-6xl' : ''}`}>
+              {line.split(' ').map((word, wi) => (
+                <span key={`${li}-${wi}`} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
+                  {word.split('').map((char, ci) => (
+                    <span
+                      key={`${li}-${wi}-${ci}`}
+                      className={`hero-char hero-char-${li}-${wi}`}
+                      style={{ display: 'inline-block', transform: 'translateY(120%)', opacity: 0 }}
+                    >
+                      {char}
+                    </span>
+                  ))}
                 </span>
               ))}
-            </span>
+            </div>
           ))}
         </h1>
         <div ref={ctaRef} style={{ opacity: 0 }}>
